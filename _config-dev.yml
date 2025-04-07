@@ -1,0 +1,12 @@
+title: "10èilminimo"
+description: ""
+url: "https://ciccaguru.github.io/banchetti" # the base hostname & protocol for your site
+locale: "it"
+
+
+markdown: kramdown
+future: true
+destination: _site
+sass:
+    sass_dir: _sass
+include: ['_pages']

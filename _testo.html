@@ -1,0 +1,28 @@
+---
+layout: default
+title: Il testo della proposta di legge
+permalink: /testo
+---
+
+
+<div class="container">
+{% for articolo in site.data.testo %}
+<div class="card shadow-sm my-4">
+  <div class="card-header">
+    <h5 class="text-purple my-1 fw-bold">{{articolo.titolo}}</h5>
+  </div>
+  <div class="card-body">
+    <p>{{articolo.testo}}</p>
+    {% if articolo.commi %}
+    <ol>
+    {% for comma in articolo.commi %}
+    <li class="mb-2">{{comma}}</li>
+    {% endfor %}
+    </ol>
+    {% endif %}
+  </div>
+
+</div>
+  {% endfor %}
+
+</div>

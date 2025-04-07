@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <link rel="shortcut icon" type="image/x-icon" href="img/prclogo.png">
+    <title>PRC Piemonte - Banchetti PRC Piemonte</title>
+
+    <!-- Standard html meta tags -->
+
+    <meta name="description" content="Banchetti raccolta firme Legge di Iniziativa Popolare 10èilminimo" />
+    <meta name="keywords" content="10èilminimo LIP legge raccolta firme unione popolare rifondazione potere al popolo" />
+    <meta property="og:image" content="img/10èilminimo">
+    <meta name="title" content="Banchetti 10èilminimo">
+
+    <link href="http://localhost:4000/css/main.css" type="text/css" rel="stylesheet" media="screen" />
+    <script defer src="http://localhost:4000/js/main.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js" integrity="sha512-dfX5uYVXzyU8+KHqj8bjo7UkOdg18PaOtpa48djpNbZHwExddghZ+ZmzWT06R5v6NSk3ZUfsH6FNEDepLx9hPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+
+
+  </head>
+
+  <body>
+    <nav class="navbar fs-smaller navbar-expand-lg bg-red darker" data-bs-theme="dark">
+  <div class="container-fluid">
+
+
+
+    <button class="ms-auto navbar-toggler text-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+  </div>
+
+</nav>
+<header class="bg-red shadow-lg pt-1 position-relative" >
+  <div class="row mt-4">
+    <div class="col-auto mx-auto">
+      <img src="img/logo.png" style="max-height: 10vh">
+    </div>
+  </div>
+  <div class="row mt-4">
+    <!-- <div class="col-auto mx-auto text-center">
+      <span class="slogan bg-red text-light fw-bold text-uppercase">Firma per un salario minimo di 10€ l'ora</span>
+    </div> -->
+  </div>
+  <div class="row mt-3 mb-4">
+    <div class="col-auto mx-auto">
+      <h1 class="text-center text-light fw-bold"> Banchetti PRC Piemonte</h1>
+    </div>
+  </div>
+  <a class="navbar-brand position-absolute my-auto" href="#">
+    <img src="http://localhost:4000/img/prclogo.png" alt="Rifondazione Comunista">
+  </a>
+</header>
+      <div x-data="{filterProvincia: ''}">
+  <div class="container">
+    <div class="row">
+      <div class="col col-auto mx-auto">
+        <div class="card shadow">
+          <div class="card-body mx-2 my-2">
+            <h3 class="text-purple text-center fw-bold">Scegli la provincia</h3>
+            <select x-data="province()" class="form-select form-select-lg mb-3 mt-3" x-model="filterProvincia" x-change="console.log('culo')" aria-label=".form-select-lg example">
+              <template x-for="provincia in province">
+                <option x-text="provincia"></option>
+              </template>
+            </select>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl mt-3" x-transition>
+    <div x-data="listabanchetti()">
+      <template x-if="(filterProvincia != 'Tutte le province') && (filterProvincia != '') && ! (filterProvincia in banchetti)">
+        <div class="row">
+          <div class="col-auto mx-auto my-4">
+            <div class="card">
+              <div class="card-body text-center shadow">
+                Non ci sono banchetti per la provincia <span x-text="filterProvincia"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </template>
+      <div x-show.important="!loaded" class="d-flex mt-5 justify-content-center" x-transition>
+        <div class="spinner-border text-purple" role="status" x-transition>
+        <span class="visually-hidden">Caricamento...</span>
+      </div>
+    </div>
+      <template x-for="(banchetti_prov, provincia) in banchetti" :key="provincia">
+        <div class="card my-5 shadow" x-show="loaded && (filterProvincia === '' || filterProvincia === 'Tutte le province' || filterProvincia === provincia)" x-transition>
+          <div class="card-header">
+            <h2 class="text-purple fw-bold mt-2 text-center" x-text="provincia"> </h2>
+          </div>
+          <div class="card-body">
+            <div class="accordion">
+
+
+            <template x-for="(banchetti_prov, comune) in banchetti_prov ">
+              <div>
+                <h4 x-text="'Comune di ' + comune" class="fw-bold text-center mt-2 mb-3"></h4>
+                <ul class="list-group mb-5">
+                  <template x-for="banchetto in banchetti_prov">
+                    <li class="list-group-item">
+                      <div class="row text-center">
+                        <div class="col fs-5 my-1" x-text="banchetto.Località">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col col-4 col-md-3 col-lg-2 col-xl-2 fs-5 fw-bold text-purple my-1" x-text="banchetto.Giorno">
+                        </div>
+
+                        <div class="col col-12 col-md-5 col-lg-2 my-1" x-text="banchetto['Ora inizio'] + ' - ' + banchetto['Ora fine']"></div>
+                        <div class="col col-12 col-lg-6 col-xl-7 my-1 fst-italic" x-text="(banchetto.Indirizzo == '') ? banchetto.Indirizzo : banchetto.Indirizzo"></div>
+                        <div x-show="(banchetto['Contatto email'] != '' || banchetto['Contatto telefonico'] != '')" class="col col-12 fs-6 text-end" x-text="'Info: ' + banchetto['Contatto email'] + ' ' + banchetto['Contatto telefonico']"></div>
+                      </div>
+                      <div style="position:absolute; top:10px; right:15px;" class="fw-bold text-purple my-1" x-text="banchetto.Organizzazione=='Unitario' ? (banchetto['Banchetto organizzato con'] != '' ? 'con ' + banchetto['Banchetto organizzato con'] : 'Unitario') : ''"></div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+          </template>
+        </template>
+    </div>
+
+  </div>
+</div>
+
+    
+    </body>
+
+</html>

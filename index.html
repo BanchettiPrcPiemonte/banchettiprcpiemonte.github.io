@@ -1,0 +1,83 @@
+---
+layout: default
+title: Banchetti PRC Piemonte
+permalink: /
+---
+
+
+  <div x-data="{filterProvincia: ''}">
+  <div class="container">
+    <div class="row">
+      <div class="col col-auto mx-auto">
+        <div class="card shadow">
+          <div class="card-body mx-2 my-2">
+            <h3 class="text-purple text-center fw-bold">Scegli la provincia</h3>
+            <select x-data="province()" class="form-select form-select-lg mb-3 mt-3" x-model="filterProvincia" x-change="console.log('culo')" aria-label=".form-select-lg example">
+              <template x-for="provincia in province">
+                <option x-text="provincia"></option>
+              </template>
+            </select>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-xl mt-3" x-transition>
+    <div x-data="listabanchetti()">
+      <template x-if="(filterProvincia != 'Tutte le province') && (filterProvincia != '') && ! (filterProvincia in banchetti)">
+        <div class="row">
+          <div class="col-auto mx-auto my-4">
+            <div class="card">
+              <div class="card-body text-center shadow">
+                Non ci sono banchetti per la provincia <span x-text="filterProvincia"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </template>
+      <div x-show.important="!loaded" class="d-flex mt-5 justify-content-center" x-transition>
+        <div class="spinner-border text-purple" role="status" x-transition>
+        <span class="visually-hidden">Caricamento...</span>
+      </div>
+    </div>
+      <template x-for="(banchetti_prov, provincia) in banchetti" :key="provincia">
+        <div class="card my-5 shadow" x-show="loaded && (filterProvincia === '' || filterProvincia === 'Tutte le province' || filterProvincia === provincia)" x-transition>
+          <div class="card-header">
+            <h2 class="text-purple fw-bold mt-2 text-center" x-text="provincia"> </h2>
+          </div>
+          <div class="card-body">
+            <div class="accordion">
+
+
+            <template x-for="(banchetti_prov, comune) in banchetti_prov ">
+              <div>
+                <h4 x-text="'Comune di ' + comune" class="fw-bold text-center mt-2 mb-3"></h4>
+                <ul class="list-group mb-5">
+                  <template x-for="banchetto in banchetti_prov">
+                    <li class="list-group-item">
+                      <div class="row text-center">
+                        <div class="col fs-5 my-1" x-text="banchetto.Località">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col col-4 col-md-3 col-lg-2 col-xl-2 fs-5 fw-bold text-purple my-1" x-text="banchetto.Giorno">
+                        </div>
+
+                        <div class="col col-12 col-md-5 col-lg-2 my-1" x-text="banchetto['Ora inizio'] + ' - ' + banchetto['Ora fine']"></div>
+                        <div class="col col-12 col-lg-6 col-xl-7 my-1 fst-italic" x-text="(banchetto.Indirizzo == '') ? banchetto.Indirizzo : banchetto.Indirizzo"></div>
+                        <div x-show="(banchetto['Contatto email'] != '' || banchetto['Contatto telefonico'] != '')" class="col col-12 fs-6 text-end" x-text="'Info: ' + banchetto['Contatto email'] + ' ' + banchetto['Contatto telefonico']"></div>
+                      </div>
+                      <div style="position:absolute; top:10px; right:15px;" class="fw-bold text-purple my-1" x-text="banchetto.Organizzazione=='Unitario' ? (banchetto['Banchetto organizzato con'] != '' ? 'con ' + banchetto['Banchetto organizzato con'] : 'Unitario') : ''"></div>
+                    </li>
+                  </template>
+                </ul>
+              </div>
+          </template>
+        </template>
+    </div>
+
+  </div>
+</div>

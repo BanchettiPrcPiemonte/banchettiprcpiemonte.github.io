@@ -1,0 +1,6 @@
+{
+    "require": {
+        "twitter/bootstrap": "^5.2",
+        "twbs/bootstrap": "^3.1"
+    }
+}

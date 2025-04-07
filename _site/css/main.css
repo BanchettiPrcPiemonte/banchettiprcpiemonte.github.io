@@ -1,0 +1,156 @@
+.bg-red {
+  background-color: #b5001e !important;
+}
+
+.bg-red.darker {
+  background-color: #990019;
+}
+
+.text-purple {
+  color: #b5001e;
+}
+
+.bg-red {
+  background-color: #eb0056;
+}
+
+body, html {
+  overflow-x: hidden;
+  font-family: "Montserrat" !important;
+}
+
+.slogan {
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  line-height: 1.7;
+  padding: 0.15rem 0.5rem;
+}
+
+.fs-smaller {
+  font-size: 1rem;
+}
+
+header {
+  padding-bottom: 2rem !important;
+  margin-bottom: 5rem !important;
+}
+
+.navbar-brand {
+  bottom: -2.75rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.navbar-brand img {
+  width: 5.5rem;
+  filter: drop-shadow(0 0.125rem 0.25rem rgba(0, 0, 0, 0.175));
+}
+
+.nav-link {
+  display: inline-block;
+  position: relative;
+  color: white;
+  font-weight: 500 !important;
+}
+.nav-link.active {
+  font-weight: 900 !important;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 5px;
+  left: 0;
+  background-color: white;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+.nav-link:hover::after, .nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.list-group-item-action-purple {
+  transition: background-color 0.2s ease;
+}
+
+.list-group-item-action-purple:hover {
+  background-color: #d9cbf0 !important;
+}
+
+.btn-purple {
+  --bs-btn-color: #fff !important;
+  --bs-btn-bg: #b5001e !important;
+  --bs-btn-border-color: #b5001e !important;
+  --bs-btn-hover-color: #fff !important;
+  --bs-btn-hover-bg: #990019 !important;
+  --bs-btn-hover-border-color: #990019 !important;
+  --bs-btn-focus-shadow-rgb: 120, 37, 250 !important;
+  --bs-btn-active-color: #fff !important;
+  --bs-btn-active-bg: #3c0792 !important;
+  --bs-btn-active-border-color: #3c0792 !important;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+  --bs-btn-disabled-color: #fff !important;
+  --bs-btn-disabled-bg: #3a2063 !important;
+  --bs-btn-disabled-border-color: #3a2063 !important;
+}
+
+.btn-outline-purple {
+  --bs-btn-color: #b5001e !important;
+  --bs-btn-border-color: transparent !important;
+  --bs-btn-hover-color: #fff !important;
+  --bs-btn-hover-bg: #b5001e !important;
+  --bs-btn-hover-border-color: #b5001e !important;
+  --bs-btn-focus-shadow-rgb: 120, 37, 250 !important;
+  --bs-btn-active-color: #fff !important;
+  --bs-btn-active-bg: #b5001e !important;
+  --bs-btn-active-border-color: #b5001e !important;
+  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
+  --bs-btn-disabled-color: #b5001e !important;
+  --bs-btn-disabled-bg: transparent !important;
+  --bs-btn-disabled-border-color: #b5001e !important;
+  --bs-gradient: none !important;
+}
+
+.reveal-card {
+  display: block;
+  background-image: linear-gradient(to top, transparent, transparent 50%, #b5001e 50%, #b5001e);
+  border: 6px solid #b5001e !important;
+  border-radius: 0px !important;
+  color: #b5001e !important;
+  text-decoration: none;
+  background-position: 0 -95%;
+  background-size: 100% 210%;
+  transition: all 0.25s ease;
+  padding: 2.8rem 2rem 2rem 2rem;
+}
+.reveal-card:hover {
+  background-position: 0 0;
+  color: white !important;
+}
+.reveal-card .icon-bottom {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: -1.8rem;
+  left: 0px;
+  right: 0px;
+}
+.reveal-card .icon-bottom span {
+  font-size: 1.5rem;
+  width: 3.6rem;
+  height: 3.6rem;
+  background-color: white;
+  border-radius: 100%;
+  color: #b5001e !important;
+  border: 6px solid #b5001e !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=main.css.map */

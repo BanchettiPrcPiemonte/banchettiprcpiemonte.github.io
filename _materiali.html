@@ -1,0 +1,26 @@
+---
+layout: default
+title: Materiali
+permalink: /materiali
+---
+<div class="container">
+  <div class="row  row-gap-4 row-cols-1 row-cols-md-2 py-4">
+    {% for sec in site.data.materiali%}
+      <div class="col">
+        <div class="card shadow">
+          <div class="card-header center"><h5 class="my-0 text-purple fw-semibold">{{sec.sezione}}</h5></div>
+          <div class="card-body">
+            <div class="list-group">
+              {% for mat in sec.materiali %}
+                <a class="list-group-item list-group-item-action list-group-item-action-purple d-flex justify-content-between align-items-center" href="{{mat.link}}">
+                  <span>{{mat.titolo}}</span>
+                  <button class="btn btn-sm btn-outline-purple fw-semibold"><i class="bi me-1 bi-download"></i> Download</button>
+                </a>
+              {% endfor %}
+              </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

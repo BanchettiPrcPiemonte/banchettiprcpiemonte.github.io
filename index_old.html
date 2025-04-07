@@ -1,0 +1,22 @@
+---
+layout: default
+title: Home
+---
+<div class="container">
+  {% for p in site.data.home.intro %}
+  <p>{{p}}</p>
+  {% endfor %}
+
+  <div class="row row-gap-5 row-cols-1 justify-content-center row-cols-lg-4 mb-5 mt-5">
+    {% for b in site.data.home.buttons %}
+    <div class="col">
+      <a href="{{b.link}}" class="card reveal-card w-100 h-100 d-flex flex-column justify-content-center">
+        <h5 class="fw-bold text-center fs-4 my-0" >{{b.title}}</h5>
+        <div class="icon-bottom"><span><i class="bi bi-{{b.icon}}"></i></span></div>
+    </a>
+    </div>
+
+    {% endfor %}
+  </div>
+</div>
+
