@@ -67,7 +67,7 @@ permalink: /
                         </div>
 
                         <div class="col col-12 col-md-5 col-lg-2 my-1" x-text="banchetto['Ora inizio'] + ' - ' + banchetto['Ora fine']"></div>
-                        <div class="col col-12 col-lg-6 col-xl-7 my-1 fst-italic" x-text="(banchetto.Indirizzo == '') ? banchetto.Indirizzo : banchetto.Indirizzo"></div>
+                        <div class="col col-12 col-lg-6 col-xl-7 my-1 fst-italic" x-text="(banchetto['Luogo del banchetto'] == '') ? banchetto['Luogo del banchetto'] : banchetto['Luogo del banchetto']"></div>
                         <div x-show="(banchetto['Contatto email'] != '' || banchetto['Contatto telefonico'] != '')" class="col col-12 fs-6 text-end" x-text="'Info: ' + banchetto['Contatto email'] + ' ' + banchetto['Contatto telefonico']"></div>
                       </div>
                       <div style="position:absolute; top:10px; right:15px;" class="fw-bold text-purple my-1" x-text="banchetto.Organizzazione=='Unitario' ? (banchetto['Banchetto organizzato con'] != '' ? 'con ' + banchetto['Banchetto organizzato con'] : 'Unitario') : ''"></div>
