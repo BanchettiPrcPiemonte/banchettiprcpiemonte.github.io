@@ -1,6 +1,6 @@
 title: "Banchetti Prc Piemonte"
 description: ""
-1rl: "https://prcpiemonte.github.io/referendum" # the base hostname & protocol for your site
+url: "https://prcpiemonte.github.io/referendum" # the base hostname & protocol for your site
 locale: "it"
 
 
