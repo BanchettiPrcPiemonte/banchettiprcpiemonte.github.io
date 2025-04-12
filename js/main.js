@@ -55,3 +55,8 @@ function province() {
     'Torino',
     'Verbano-Cusio-Ossola'],}
   }
+
+  function to_time(string){
+    parts = string.split('.');
+    return parts[0] + ':' + parts[1];
+  }

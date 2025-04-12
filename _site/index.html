@@ -123,7 +123,7 @@
                         <div class="col col-4 col-md-3 col-lg-2 col-xl-2 fs-5 fw-bold text-purple my-1" x-text="banchetto.Giorno">
                         </div>
 
-                        <div class="col col-12 col-md-5 col-lg-2 my-1" x-text="banchetto['Ora inizio'] + ' - ' + banchetto['Ora fine']"></div>
+                        <div class="col col-12 col-md-5 col-lg-2 my-1" x-text="to_time(banchetto['Ora inizio']) + ' - ' + to_time(banchetto['Ora fine'])"></div>
                         <div class="col col-12 col-lg-6 col-xl-7 my-1 fst-italic" x-text="(banchetto.Indirizzo == '') ? banchetto.Indirizzo : banchetto.Indirizzo"></div>
                         <div x-show="(banchetto['Contatto email'] != '' || banchetto['Contatto telefonico'] != '')" class="col col-12 fs-6 text-end" x-text="'Info: ' + banchetto['Contatto email'] + ' ' + banchetto['Contatto telefonico']"></div>
                       </div>
