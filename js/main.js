@@ -60,3 +60,13 @@ function province() {
     parts = string.split('.');
     return parts[0] + ':' + parts[1];
   }
+
+  function getType(string){
+    if (string == "Banchetto" )
+      return "Banchetto";
+    else if (string == "Solo volantinaggio")
+      return "Volantinaggio";
+    else
+      return string;
+    
+  }
