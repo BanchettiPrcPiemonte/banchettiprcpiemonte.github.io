@@ -13,8 +13,19 @@
           complete: function (results) {
             parsedData = results.data;
             const transformedData = {};
+            const dateObj = new Date();
+            const month   = dateObj.getUTCMonth() + 1; // months from 1-12
+            const day     = dateObj.getUTCDate();
+            const year    = dateObj.getUTCFullYear();
             parsedData.forEach(item => {
               const { Provincia, Comune, ...rest } = item;
+              dates = rest.Giorno.split("/");
+              data = new Date(dates[2], dates[1] - 1, dates[0]);
+
+              if((dates[2] < year) || (dates[2] == year && dates[1] < month) || (dates[2] == year && dates[1] == month && dates[0] < day)){
+                return;
+              }
+
               if (transformedData[Provincia]) {
                 if (transformedData[Provincia][Comune]) {
                   transformedData[Provincia][Comune].push(rest);
@@ -30,7 +41,6 @@
 
             component.banchetti = transformedData;
             component.loaded = true;
-            console.log(transformedData);
           },
           error: function (error) {
             console.error('Error parsing CSV:', error);
